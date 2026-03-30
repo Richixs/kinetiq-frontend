@@ -11,12 +11,18 @@ This repository is part of an academic project for the General Physics course in
 
 ## Table of contents
 
+- [Deployments](#deployments)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project structure](#project-structure)
 - [Available scripts](#available-scripts)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Deployments
+
+- Development: [https://develop.kinetiq.scesi.dev](https://develop.kinetiq.scesi.dev)
+- Production: [https://kinetiq.scesi.dev](https://kinetiq.scesi.dev)
 
 ## Installation
 
