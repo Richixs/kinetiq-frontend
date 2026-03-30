@@ -1,0 +1,12 @@
+name: kinetiq
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kinetiq:latest
+    container_name: kinetiq-web
+    ports:
+      - '8080:80'
+    restart: unless-stopped
