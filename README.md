@@ -1,48 +1,111 @@
-# kinetiq
+# Kinetiq Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
+![Status](https://img.shields.io/badge/status-in%20development-blue)
+![Vue 3](https://img.shields.io/badge/Vue-3.x-42b883)
+[![Backend API](https://img.shields.io/badge/API-FastAPI-009688)](https://github.com/Richixs/kinetiq-backend)
 
-## Recommended IDE Setup
+Frontend for an interactive kinematics simulator built with Vue.js. The project allows users to visualize physics simulations and consume data from a FastAPI backend API.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+This repository is part of an academic project for the General Physics course in the Computer Science program at Universidad Mayor de San Simon (UMSS), Bolivia.
 
-## Recommended Browser Setup
+## Table of contents
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project structure](#project-structure)
+- [Available scripts](#available-scripts)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Type Support for `.vue` Imports in TS
+## Installation
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### 1. Clone the repository
 
-## Customize configuration
+```bash
+git clone https://github.com/your-org/kinetiq-frontend.git
+cd kinetiq-frontend
+```
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### 2. Verify Node.js version
 
-## Project Setup
+Use a version compatible with the engines field in `package.json`:
 
-```sh
+- Node.js: `^20.19.0 || >=22.12.0`
+
+### 3. Install dependencies
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 4. Configure environment variables
 
-```sh
+```bash
+cp .env.example .env
+```
+
+### 5. Run the development environment
+
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The frontend will be available at the URL printed by Vite (default: `http://localhost:5173`).
 
-```sh
-npm run build
+## Usage
+
+1. Start the FastAPI backend.
+2. Start the frontend with `npm run dev`.
+3. Open the web interface.
+4. Configure simulation parameters (for example: initial position, velocity, acceleration, and time).
+5. Run the simulation and analyze visual outputs and metrics.
+
+## Project structure
+
+Current structure (summary):
+
+```text
+.
+|-- public/
+|-- src/
+|   |-- assets/
+|   |-- components/
+|   |-- router/
+|   |-- views/
+|   |-- App.vue
+|   `-- main.ts
+|-- Dockerfile
+|-- docker-compose.yml
+|-- nginx.conf
+`-- package.json
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Available scripts
 
-```sh
-npm run lint
-```
+| Script                 | Description                                         |
+| ---------------------- | --------------------------------------------------- |
+| `npm run dev`          | Starts the Vite development server                  |
+| `npm run build`        | Runs type-check and production build                |
+| `npm run build-only`   | Creates a production build without extra type-check |
+| `npm run preview`      | Serves the built app locally                        |
+| `npm run type-check`   | Runs type checking with `vue-tsc`                   |
+| `npm run lint`         | Runs lint pipeline (`oxlint` + `eslint`)            |
+| `npm run lint:oxlint`  | Runs fast linting with oxlint                       |
+| `npm run lint:eslint`  | Runs ESLint                                         |
+| `npm run format`       | Formats source files with Prettier                  |
+| `npm run format:check` | Checks formatting without changing files            |
+
+## Contributing
+
+Contributions are welcome, especially in academic and open-source contexts. To contribute:
+
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md).
+2. Follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+3. Open an Issue before implementing large changes.
+
+## License
+
+This project is licensed under the MIT License.
+
+See [LICENSE.md](LICENSE.md) for the full text.
