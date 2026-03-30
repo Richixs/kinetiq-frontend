@@ -14,9 +14,6 @@ concurrency:
   group: deploy-frontend-dev
   cancel-in-progress: true
 
-env:
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/kinetiq
-
 jobs:
   deploy-dev:
     if: github.repository == 'Richixs/kinetiq-frontend'
@@ -36,14 +33,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Compute image name
+        id: image_meta
+        run: echo "image_name=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/kinetiq" >> "$GITHUB_OUTPUT"
+
       - name: Build and push DEV image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:dev-${{ github.sha }}
-            ${{ env.IMAGE_NAME }}:dev-latest
+            ${{ steps.image_meta.outputs.image_name }}:dev-${{ github.sha }}
+            ${{ steps.image_meta.outputs.image_name }}:dev-latest
 
       - name: Notify ArgoCD (DEV)
         uses: peter-evans/repository-dispatch@v3
@@ -55,7 +56,7 @@ jobs:
             {
               "app": "kinetiq",
               "environment": "dev",
-              "image": "${{ env.IMAGE_NAME }}:dev-${{ github.sha }}",
+              "image": "${{ steps.image_meta.outputs.image_name }}:dev-${{ github.sha }}",
               "sha": "${{ github.sha }}",
               "source_repo": "${{ github.repository }}"
             }
