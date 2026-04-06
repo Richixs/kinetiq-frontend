@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --mode local",
-    "dev:local": "vite --mode local",
+    "dev": "vite",
     "dev:develop": "vite --mode develop",
     "dev:production": "vite --mode production",
     "build": "run-p type-check \"build-only {@}\" --",

@@ -5,7 +5,7 @@ FROM node:24.12.0-alpine3.23 AS builder
 
 WORKDIR /app
 
-ARG VITE_MODE=production
+ARG VITE_MODE=development
 
 COPY package*.json ./
 RUN npm ci

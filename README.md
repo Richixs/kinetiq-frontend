@@ -76,7 +76,7 @@ cp .env.example .env
 
 Available mode-specific environment files:
 
-- `.env.local` -> `VITE_API_URL=http://127.0.0.1:8000`
+- `.env.development` -> `VITE_API_URL=http://127.0.0.1:8000`
 - `.env.develop` -> `VITE_API_URL=https://api.develop.kinetiq.scesi.dev`
 - `.env.production` -> `VITE_API_URL=https://api.kinetiq.scesi.dev`
 
@@ -131,23 +131,22 @@ Current structure (summary):
 
 ## Available scripts
 
-| Script                     | Description                                         |
-| -------------------------- | --------------------------------------------------- |
-| `npm run dev`              | Starts Vite using local mode (`.env.local`)         |
-| `npm run dev:local`        | Starts Vite in local mode                           |
-| `npm run dev:develop`      | Starts Vite in develop mode (`.env.develop`)        |
-| `npm run dev:production`   | Starts Vite in production mode (`.env.production`)  |
-| `npm run build`            | Runs type-check and production build                |
-| `npm run build:develop`    | Builds with develop mode                            |
-| `npm run build:production` | Builds with production mode                         |
-| `npm run build-only`       | Creates a production build without extra type-check |
-| `npm run preview`          | Serves the built app locally                        |
-| `npm run type-check`       | Runs type checking with `vue-tsc`                   |
-| `npm run lint`             | Runs lint pipeline (`oxlint` + `eslint`)            |
-| `npm run lint:oxlint`      | Runs fast linting with oxlint                       |
-| `npm run lint:eslint`      | Runs ESLint                                         |
-| `npm run format`           | Formats source files with Prettier                  |
-| `npm run format:check`     | Checks formatting without changing files            |
+| Script                     | Description                                          |
+| -------------------------- | ---------------------------------------------------- |
+| `npm run dev`              | Starts Vite in development mode (`.env.development`) |
+| `npm run dev:develop`      | Starts Vite in develop mode (`.env.develop`)         |
+| `npm run dev:production`   | Starts Vite in production mode (`.env.production`)   |
+| `npm run build`            | Runs type-check and production build                 |
+| `npm run build:develop`    | Builds with develop mode                             |
+| `npm run build:production` | Builds with production mode                          |
+| `npm run build-only`       | Creates a production build without extra type-check  |
+| `npm run preview`          | Serves the built app locally                         |
+| `npm run type-check`       | Runs type checking with `vue-tsc`                    |
+| `npm run lint`             | Runs lint pipeline (`oxlint` + `eslint`)             |
+| `npm run lint:oxlint`      | Runs fast linting with oxlint                        |
+| `npm run lint:eslint`      | Runs ESLint                                          |
+| `npm run format`           | Formats source files with Prettier                   |
+| `npm run format:check`     | Checks formatting without changing files             |
 
 ## Contributing
 
