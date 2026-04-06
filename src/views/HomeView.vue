@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from 'vue'
 import MovilCard from '@/components/MovilCard.vue'
+import { apiUrl } from '@/config/api'
 import type { Movil } from '@/types'
 
 const MAX_MOVILES = 3
@@ -50,7 +51,7 @@ async function submit() {
   loading.value = true
 
   try {
-    const response = await fetch('/api/v1/simulations/render', {
+    const response = await fetch(apiUrl('/api/v1/simulations/render'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

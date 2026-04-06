@@ -5,11 +5,13 @@ FROM node:24.12.0-alpine3.23 AS builder
 
 WORKDIR /app
 
+ARG VITE_MODE=production
+
 COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run build
+RUN npm run build-only -- --mode ${VITE_MODE}
 
 # Stage 2: Nginx
 FROM nginx:1.29-alpine3.22

@@ -42,8 +42,6 @@ npm run dev
 
 Open `http://localhost:5173`, configure moviles and parameters, click **Simular**, and wait ~15 seconds for the Manim-rendered animation.
 
-The Vite dev server proxies all `/api/*` requests to `http://127.0.0.1:8000` automatically, so no CORS configuration is needed during development.
-
 ## Deployments
 
 - Development: [https://develop.kinetiq.scesi.dev](https://develop.kinetiq.scesi.dev)
@@ -76,6 +74,12 @@ npm install
 cp .env.example .env
 ```
 
+Available mode-specific environment files:
+
+- `.env.local` -> `VITE_API_URL=http://127.0.0.1:8000`
+- `.env.develop` -> `VITE_API_URL=https://api.develop.kinetiq.scesi.dev`
+- `.env.production` -> `VITE_API_URL=https://api.kinetiq.scesi.dev`
+
 ### 5. Run the development environment
 
 ```bash
@@ -86,7 +90,9 @@ The frontend will be available at the URL printed by Vite (default: `http://loca
 
 ## Backend dependency
 
-This frontend communicates with the [kinetiq-backend](https://github.com/Richixs/kinetiq-backend) API. During development, the Vite dev server is configured to proxy `/api/*` requests to `http://127.0.0.1:8000`. If the backend runs on a different port, update the proxy target in `vite.config.ts`.
+This frontend communicates with the [kinetiq-backend](https://github.com/Richixs/kinetiq-backend) API. The API base URL is configured through `VITE_API_URL` and loaded by Vite mode (`local`, `develop`, `production`).
+
+Local mode uses a direct backend URL (`http://127.0.0.1:8000`), so CORS must be enabled in the backend for your frontend origin.
 
 Without the backend running, the simulation form will submit but return a network error.
 
@@ -125,18 +131,23 @@ Current structure (summary):
 
 ## Available scripts
 
-| Script                 | Description                                         |
-| ---------------------- | --------------------------------------------------- |
-| `npm run dev`          | Starts the Vite development server                  |
-| `npm run build`        | Runs type-check and production build                |
-| `npm run build-only`   | Creates a production build without extra type-check |
-| `npm run preview`      | Serves the built app locally                        |
-| `npm run type-check`   | Runs type checking with `vue-tsc`                   |
-| `npm run lint`         | Runs lint pipeline (`oxlint` + `eslint`)            |
-| `npm run lint:oxlint`  | Runs fast linting with oxlint                       |
-| `npm run lint:eslint`  | Runs ESLint                                         |
-| `npm run format`       | Formats source files with Prettier                  |
-| `npm run format:check` | Checks formatting without changing files            |
+| Script                     | Description                                         |
+| -------------------------- | --------------------------------------------------- |
+| `npm run dev`              | Starts Vite using local mode (`.env.local`)         |
+| `npm run dev:local`        | Starts Vite in local mode                           |
+| `npm run dev:develop`      | Starts Vite in develop mode (`.env.develop`)        |
+| `npm run dev:production`   | Starts Vite in production mode (`.env.production`)  |
+| `npm run build`            | Runs type-check and production build                |
+| `npm run build:develop`    | Builds with develop mode                            |
+| `npm run build:production` | Builds with production mode                         |
+| `npm run build-only`       | Creates a production build without extra type-check |
+| `npm run preview`          | Serves the built app locally                        |
+| `npm run type-check`       | Runs type checking with `vue-tsc`                   |
+| `npm run lint`             | Runs lint pipeline (`oxlint` + `eslint`)            |
+| `npm run lint:oxlint`      | Runs fast linting with oxlint                       |
+| `npm run lint:eslint`      | Runs ESLint                                         |
+| `npm run format`           | Formats source files with Prettier                  |
+| `npm run format:check`     | Checks formatting without changing files            |
 
 ## Contributing
 
