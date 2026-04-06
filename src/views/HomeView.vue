@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
         <MovilCard
           v-for="(movil, idx) in moviles"
           :key="idx"
-          :movil="movil"
+          v-model="moviles[idx]!"
           :can-remove="canRemoveMovil"
           :disabled="loading"
           @remove="removeMovil(idx)"
@@ -142,13 +142,7 @@ onBeforeUnmount(() => {
 
       <p v-else-if="errorMessage" class="error">{{ errorMessage }}</p>
 
-      <video
-        v-else-if="videoUrl"
-        :src="videoUrl"
-        controls
-        autoplay
-        class="video"
-      ></video>
+      <video v-else-if="videoUrl" :src="videoUrl" controls autoplay class="video"></video>
     </section>
   </main>
 </template>

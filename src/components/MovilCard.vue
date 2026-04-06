@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { Movil } from '@/types'
 
-// The `movil` prop is a shared reference to the parent's array element;
-// v-model on its fields mutates the same object and Vue reactivity does the
-// rest. No defineModel needed since we only edit fields, never replace the
-// object.
+const movil = defineModel<Movil>({ required: true })
+
 defineProps<{
-  movil: Movil
   canRemove: boolean
   disabled?: boolean
 }>()
