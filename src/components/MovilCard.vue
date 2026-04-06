@@ -119,7 +119,7 @@ defineEmits<{
 }
 
 .field input:focus {
-  outline: 2px solid hsla(160, 100%, 37%, 0.5);
+  outline: 2px solid var(--color-accent-focus);
   outline-offset: 1px;
 }
 
@@ -139,10 +139,10 @@ defineEmits<{
 
 .btn-danger {
   background: transparent;
-  color: #e74c3c;
+  color: var(--color-error);
 }
 
 .btn-danger:hover:not(:disabled) {
-  background: rgba(231, 76, 60, 0.12);
+  background: var(--color-error-bg);
 }
 </style>

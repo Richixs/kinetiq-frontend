@@ -220,7 +220,7 @@ main {
 }
 
 .field input:focus {
-  outline: 2px solid hsla(160, 100%, 37%, 0.5);
+  outline: 2px solid var(--color-accent-focus);
   outline-offset: 1px;
 }
 
@@ -240,7 +240,7 @@ main {
 }
 
 .btn-primary {
-  background: hsl(160, 100%, 37%);
+  background: var(--color-accent);
   color: #fff;
   font-weight: 600;
   padding: 0.7rem 1.8rem;
@@ -248,7 +248,7 @@ main {
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: hsl(160, 100%, 32%);
+  background: var(--color-accent-hover);
 }
 
 .btn-secondary {
@@ -277,7 +277,7 @@ main {
   width: 28px;
   height: 28px;
   border: 3px solid var(--color-border);
-  border-top-color: hsl(160, 100%, 37%);
+  border-top-color: var(--color-accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   flex-shrink: 0;
@@ -290,11 +290,11 @@ main {
 }
 
 .error {
-  color: #e74c3c;
+  color: var(--color-error);
   padding: 0.75rem 1rem;
-  background: rgba(231, 76, 60, 0.08);
+  background: var(--color-error-bg);
   border-radius: 4px;
-  border: 1px solid rgba(231, 76, 60, 0.3);
+  border: 1px solid var(--color-error-border);
 }
 
 .video {
