@@ -11,6 +11,7 @@ This repository is part of an academic project for the General Physics course in
 
 ## Table of contents
 
+- [Quick start (full stack)](#quick-start-full-stack)
 - [Deployments](#deployments)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -18,6 +19,30 @@ This repository is part of an academic project for the General Physics course in
 - [Available scripts](#available-scripts)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Quick start (full stack)
+
+The frontend needs the backend API running to render simulations. Open two terminals:
+
+**Terminal 1 — Backend** (see [kinetiq-backend](https://github.com/Richixs/kinetiq-backend) for full setup):
+
+```bash
+cd kinetiq-backend
+uv sync
+uv run uvicorn app.main:app --reload
+```
+
+**Terminal 2 — Frontend:**
+
+```bash
+cd kinetiq-frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`, configure moviles and parameters, click **Simular**, and wait ~15 seconds for the Manim-rendered animation.
+
+The Vite dev server proxies all `/api/*` requests to `http://127.0.0.1:8000` automatically, so no CORS configuration is needed during development.
 
 ## Deployments
 
@@ -59,13 +84,21 @@ npm run dev
 
 The frontend will be available at the URL printed by Vite (default: `http://localhost:5173`).
 
+## Backend dependency
+
+This frontend communicates with the [kinetiq-backend](https://github.com/Richixs/kinetiq-backend) API. During development, the Vite dev server is configured to proxy `/api/*` requests to `http://127.0.0.1:8000`. If the backend runs on a different port, update the proxy target in `vite.config.ts`.
+
+Without the backend running, the simulation form will submit but return a network error.
+
 ## Usage
 
-1. Start the FastAPI backend.
+1. Start the FastAPI backend on port 8000.
 2. Start the frontend with `npm run dev`.
-3. Open the web interface.
-4. Configure simulation parameters (for example: initial position, velocity, acceleration, and time).
-5. Run the simulation and analyze visual outputs and metrics.
+3. Open the web interface at `http://localhost:5173`.
+4. Set the total simulation time (t_max).
+5. Add up to 3 moviles with their parameters (position, velocity, start time, color).
+6. Click **Simular** and wait for the Manim render (~15–25 seconds).
+7. Watch the resulting animation in the embedded video player.
 
 ## Project structure
 
@@ -77,8 +110,11 @@ Current structure (summary):
 |-- src/
 |   |-- assets/
 |   |-- components/
+|   |   `-- MovilCard.vue     # Editable card for a single movil's parameters
 |   |-- router/
 |   |-- views/
+|   |   `-- HomeView.vue      # Main simulator view (form + video player)
+|   |-- types.ts              # Shared TypeScript interfaces (Movil)
 |   |-- App.vue
 |   `-- main.ts
 |-- Dockerfile
