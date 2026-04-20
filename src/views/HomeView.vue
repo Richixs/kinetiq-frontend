@@ -145,6 +145,16 @@ onBeforeUnmount(() => {
 
       <video v-else-if="videoUrl" :src="videoUrl" controls autoplay class="video"></video>
     </section>
+
+    <footer class="credits">
+      <p class="credits-title">Equipo de desarrollo</p>
+      <ul class="credits-list">
+        <li>Shamir L. Terán Mustafá</li>
+        <li>Steven J. Ramos Salazar</li>
+        <li>Marioli Leon Saravia</li>
+        <li>Victoria Soto Marañón</li>
+      </ul>
+    </footer>
   </main>
 </template>
 
@@ -303,5 +313,34 @@ main {
   max-width: 100%;
   border-radius: 6px;
   background: #000;
+}
+
+.credits {
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-text);
+  opacity: 0.75;
+}
+
+.credits-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+}
+
+.credits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.9rem;
 }
 </style>
