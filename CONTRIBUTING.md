@@ -75,6 +75,19 @@ Include:
 - Notes about tests you ran.
 - References to related Issues (if applicable).
 
+## UI/UX design contributions
+
+Design contributions are welcome. You can contribute to the UI/UX proposal, flows, components, and visual consistency of the project.
+
+To collaborate on design:
+
+1. Open the Figma file:
+   https://www.figma.com/design/9vMflTT1KCv2KdOkJJuIVz/Kinetiq-UI?node-id=0-1&t=YPoHgSaZfASRsbBs-1
+2. Sign in with your Figma account.
+3. Click **Request edit access** in Figma.
+4. Wait for approval from a maintainer before editing.
+5. Once approved, share your proposed design changes and rationale in your PR or Issue.
+
 ## Pull Request conventions
 
 - Use a descriptive, concise title.

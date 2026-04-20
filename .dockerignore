@@ -11,6 +11,7 @@ pnpm-debug.log*
 dist
 coverage
 *.local
-.env
-.env.*
+!.env.development
+!.env.develop
+!.env.production
 .github
