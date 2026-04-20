@@ -24,10 +24,10 @@ const members: Member[] = [
 
     <section class="panel intro">
       <p>
-        Kinetiq es un proyecto académico desarrollado para la materia de Física General
-        en la carrera de Ingeniería Informática de la Universidad Mayor de San Simón.
-        Su objetivo es ofrecer un simulador interactivo de cinemática en una dimensión —
-        tanto MRU como MRUV — con animaciones generadas por Manim.
+        Kinetiq es un proyecto académico desarrollado para la materia de Física General en la
+        carrera de Ingeniería Informática de la Universidad Mayor de San Simón. Su objetivo es
+        ofrecer un simulador interactivo de cinemática en una dimensión — tanto MRU como MRUV — con
+        animaciones generadas por Manim.
       </p>
     </section>
 
