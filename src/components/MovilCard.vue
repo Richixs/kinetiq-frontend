@@ -41,8 +41,12 @@ defineEmits<{
         <input v-model.number="movil.x_0" type="number" step="0.1" required :disabled="disabled" />
       </div>
       <div class="field">
-        <label>Velocidad v (m/s)</label>
+        <label>Velocidad inicial v (m/s)</label>
         <input v-model.number="movil.v" type="number" step="0.1" required :disabled="disabled" />
+      </div>
+      <div class="field">
+        <label>Aceleración a (m/s²)</label>
+        <input v-model.number="movil.a" type="number" step="0.1" required :disabled="disabled" />
       </div>
       <div class="field">
         <label>t de arranque (s)</label>

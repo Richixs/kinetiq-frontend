@@ -13,6 +13,7 @@ function makeDefaultMovil(index: number): Movil {
     label: DEFAULT_LABELS[index] ?? `M${index + 1}`,
     x_0: 0,
     v: 5,
+    a: 0,
     t_start: 0,
     color: DEFAULT_COLORS[index] ?? '#ffffff',
   }
@@ -83,7 +84,7 @@ onBeforeUnmount(() => {
   <main>
     <header class="page-header">
       <h1>Kinetiq</h1>
-      <p class="subtitle">Simulador de cinemática — MRU en 1D</p>
+      <p class="subtitle">Simulador de cinemática — MRU y MRUV en 1D</p>
     </header>
 
     <form class="sim-form" @submit.prevent="submit">
