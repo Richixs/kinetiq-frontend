@@ -67,10 +67,10 @@ defineEmits<{
 .movil-card {
   border: 1px solid var(--color-border);
   border-left-width: 4px;
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 1rem 1.25rem;
   margin-bottom: 0.75rem;
-  background: var(--color-background);
+  background: linear-gradient(180deg, rgba(32, 32, 56, 0.74), rgba(26, 26, 46, 0.78));
 }
 
 .movil-card:last-child {
@@ -81,58 +81,70 @@ defineEmits<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.movil-head strong {
+  color: var(--color-heading);
+  letter-spacing: 0.01em;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.75rem 1rem;
+  gap: 0.85rem 1rem;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.32rem;
 }
 
 .field label {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--color-text);
-  opacity: 0.8;
+  opacity: 0.88;
 }
 
 .field input[type='text'],
 .field input[type='number'] {
-  padding: 0.45rem 0.6rem;
+  padding: 0.5rem 0.6rem;
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 8px;
   background: var(--color-background);
   color: var(--color-heading);
   font: inherit;
   font-size: 0.95rem;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .field input[type='color'] {
   height: 2.2rem;
   padding: 0.1rem;
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 8px;
   background: var(--color-background);
   cursor: pointer;
 }
 
 .field input:focus {
-  outline: 2px solid var(--color-accent-focus);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
 }
 
 .btn {
-  padding: 0.35rem 0.7rem;
+  padding: 0.4rem 0.8rem;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 8px;
   font: inherit;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -142,7 +154,8 @@ defineEmits<{
 }
 
 .btn-danger {
-  background: transparent;
+  background: rgba(248, 113, 113, 0.06);
+  border-color: rgba(248, 113, 113, 0.25);
   color: var(--color-error);
 }
 

@@ -82,9 +82,24 @@ onBeforeUnmount(() => {
 
 <template>
   <main>
-    <header class="page-header">
-      <h1>Kinetiq</h1>
-      <p class="subtitle">Simulador de cinemática — MRU y MRUV en 1D</p>
+    <header class="app-header">
+      <div class="brand">
+        <p class="brand-name">Kinetiq</p>
+        <p class="brand-subtitle">Simulador de cinemática - MRU y MRUV en 1D</p>
+      </div>
+      <a
+        class="github-link"
+        href="https://github.com/Richixs/kinetiq-frontend"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Repositorio de Kinetiq en GitHub"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.41 3-.42 1.02.01 2.04.15 3 .42 2.28-1.55 3.29-1.23 3.29-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.21.69.83.57C20.57 21.79 24 17.29 24 12c0-6.63-5.37-12-12-12z"
+          />
+        </svg>
+      </a>
     </header>
 
     <form class="sim-form" @submit.prevent="submit">
@@ -129,7 +144,7 @@ onBeforeUnmount(() => {
 
       <div class="actions">
         <button type="submit" class="btn btn-primary" :disabled="loading">
-          {{ loading ? 'Renderizando…' : 'Simular' }}
+          {{ loading ? 'Renderizando...' : 'Simular' }}
         </button>
       </div>
     </form>
@@ -153,37 +168,90 @@ onBeforeUnmount(() => {
 main {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
-.page-header {
-  text-align: center;
-  padding-bottom: 0.5rem;
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.15rem 0.1rem 0.8rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.page-header h1 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: var(--color-heading);
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.brand::before {
+  content: none;
+}
+
+.brand-name {
   margin: 0;
+  font-size: clamp(1.28rem, 2.3vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-heading);
 }
 
-.subtitle {
+.brand-subtitle {
+  margin: 0;
   color: var(--color-text);
-  opacity: 0.75;
-  margin-top: 0.25rem;
+  opacity: 0.86;
+  font-size: clamp(0.8rem, 1.55vw, 0.92rem);
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  color: var(--color-heading);
+  background: transparent;
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.github-link svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;
+}
+
+.github-link:hover {
+  transform: translateY(-0.5px);
+  border-color: var(--color-accent);
+  background: rgba(0, 188, 212, 0.08);
+}
+
+.sim-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .panel {
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 1.25rem 1.5rem;
-  background: var(--color-background-soft);
+  background: linear-gradient(180deg, rgba(30, 30, 52, 0.95), rgba(22, 22, 38, 0.98));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(4px);
 }
 
 .panel h2 {
   margin: 0 0 1rem 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--color-heading);
 }
 
@@ -201,39 +269,49 @@ main {
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.35rem;
   max-width: 320px;
 }
 
 .field label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
   color: var(--color-text);
-  opacity: 0.8;
+  opacity: 0.88;
+  text-transform: uppercase;
 }
 
 .field input[type='number'] {
-  padding: 0.45rem 0.6rem;
+  padding: 0.55rem 0.65rem;
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 8px;
   background: var(--color-background);
   color: var(--color-heading);
   font: inherit;
   font-size: 0.95rem;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .field input:focus {
-  outline: 2px solid var(--color-accent-focus);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
 }
 
 .btn {
   padding: 0.55rem 1.1rem;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 10px;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition:
+    transform 0.16s ease,
+    opacity 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .btn:disabled {
@@ -242,37 +320,39 @@ main {
 }
 
 .btn-primary {
-  background: var(--color-accent);
-  color: #fff;
+  background: linear-gradient(140deg, var(--color-accent), var(--color-accent-hover));
+  color: #ffffff;
   font-weight: 600;
-  padding: 0.7rem 1.8rem;
+  padding: 0.78rem 2.1rem;
   font-size: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 151, 167, 0.24);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: var(--color-accent-hover);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: rgba(34, 211, 238, 0.08);
   color: var(--color-heading);
   border-color: var(--color-border);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  border-color: var(--color-border-hover);
+  border-color: var(--color-accent);
 }
 
 .actions {
   display: flex;
   justify-content: center;
+  margin-top: 0.4rem;
 }
 
 .loading {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 0.9rem 0;
 }
 
 .spinner {
@@ -295,14 +375,48 @@ main {
   color: var(--color-error);
   padding: 0.75rem 1rem;
   background: var(--color-error-bg);
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid var(--color-error-border);
 }
 
 .video {
   width: 100%;
-  max-width: 100%;
-  border-radius: 6px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
   background: #000;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0.05rem 0 0.72rem;
+  }
+
+  .brand-subtitle {
+    max-width: 15.5rem;
+    line-height: 1.35;
+  }
+
+  .panel {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .sim-form {
+    gap: 0.85rem;
+  }
+
+  .panel-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .actions {
+    width: 100%;
+  }
 }
 </style>
