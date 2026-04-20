@@ -87,19 +87,22 @@ onBeforeUnmount(() => {
         <p class="brand-name">Kinetiq</p>
         <p class="brand-subtitle">Simulador de cinemática - MRU y MRUV en 1D</p>
       </div>
-      <a
-        class="github-link"
-        href="https://github.com/Richixs/kinetiq-frontend"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Repositorio de Kinetiq en GitHub"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.41 3-.42 1.02.01 2.04.15 3 .42 2.28-1.55 3.29-1.23 3.29-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.21.69.83.57C20.57 21.79 24 17.29 24 12c0-6.63-5.37-12-12-12z"
-          />
-        </svg>
-      </a>
+      <nav class="header-actions">
+        <RouterLink to="/about" class="about-link">Sobre nosotros</RouterLink>
+        <a
+          class="github-link"
+          href="https://github.com/Richixs/kinetiq-frontend"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Repositorio de Kinetiq en GitHub"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.41 3-.42 1.02.01 2.04.15 3 .42 2.28-1.55 3.29-1.23 3.29-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.82 1.1.82 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.21.69.83.57C20.57 21.79 24 17.29 24 12c0-6.63-5.37-12-12-12z"
+            />
+          </svg>
+        </a>
+      </nav>
     </header>
 
     <form class="sim-form" @submit.prevent="submit">
@@ -161,6 +164,16 @@ onBeforeUnmount(() => {
 
       <video v-else-if="videoUrl" :src="videoUrl" controls autoplay class="video"></video>
     </section>
+
+    <footer class="credits">
+      <p class="credits-title">Equipo de desarrollo</p>
+      <ul class="credits-list">
+        <li>Shamir L. Terán Mustafá</li>
+        <li>Steven J. Ramos Salazar</li>
+        <li>Marioli Leon Saravia</li>
+        <li>Victoria Soto Marañón</li>
+      </ul>
+    </footer>
   </main>
 </template>
 
@@ -203,6 +216,31 @@ main {
   color: var(--color-text);
   opacity: 0.86;
   font-size: clamp(0.8rem, 1.55vw, 0.92rem);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.about-link {
+  color: var(--color-heading);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.about-link:hover {
+  transform: translateY(-0.5px);
+  border-color: var(--color-accent);
+  background: rgba(0, 188, 212, 0.08);
 }
 
 .github-link {
@@ -384,6 +422,35 @@ main {
   border-radius: 10px;
   border: 1px solid var(--color-border);
   background: #000;
+}
+
+.credits {
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-text);
+  opacity: 0.75;
+}
+
+.credits-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+}
+
+.credits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 640px) {
