@@ -1,8 +1,8 @@
-/* Kinetiq color palette — dark theme, physics-inspired accent */
+/* Kinetiq color palette */
 :root {
   --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  --vt-c-white-soft: #f4f6f8;
+  --vt-c-white-mute: #e8ecf2;
 
   --vt-c-black: #121212;
   --vt-c-black-soft: #1a1a2e;
@@ -11,7 +11,6 @@
   --vt-c-divider-dark-1: rgba(100, 100, 140, 0.45);
   --vt-c-divider-dark-2: rgba(100, 100, 140, 0.25);
 
-  /* Dark by default — matches the Manim video's black background */
   --color-background: var(--vt-c-black);
   --color-background-soft: var(--vt-c-black-soft);
   --color-background-mute: var(--vt-c-black-mute);
@@ -20,18 +19,16 @@
   --color-border-hover: var(--vt-c-divider-dark-1);
 
   --color-heading: rgba(240, 240, 255, 0.95);
-  --color-text: rgba(220, 220, 240, 0.7);
+  --color-text: rgba(220, 220, 240, 0.76);
 
-  /* Accent — cyan/blue, scientific feel, distinct from movil colors */
   --color-accent: #00bcd4;
   --color-accent-hover: #0097a7;
   --color-accent-focus: rgba(0, 188, 212, 0.4);
-  --color-accent-subtle: rgba(0, 188, 212, 0.08);
+  --color-accent-subtle: rgba(0, 188, 212, 0.1);
 
-  /* Error */
-  --color-error: #ef5350;
-  --color-error-bg: rgba(239, 83, 80, 0.1);
-  --color-error-border: rgba(239, 83, 80, 0.3);
+  --color-error: #f87171;
+  --color-error-bg: rgba(248, 113, 113, 0.14);
+  --color-error-border: rgba(248, 113, 113, 0.38);
 }
 
 *,
@@ -45,22 +42,14 @@
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
+  background:
+    radial-gradient(circle at 12% -10%, rgba(0, 188, 212, 0.08), transparent 48%),
+    radial-gradient(circle at 88% 0%, rgba(0, 151, 167, 0.06), transparent 38%),
+    var(--color-background);
   line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
+  font-family: 'IBM Plex Sans', 'Segoe UI', 'Helvetica Neue', sans-serif;
   font-size: 15px;
+  letter-spacing: 0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
